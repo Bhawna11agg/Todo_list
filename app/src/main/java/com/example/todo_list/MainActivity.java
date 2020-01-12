@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,7 @@ public class MainActivity extends AppCompatActivity{
     EditText edt;
     Button btn;
     RecyclerView my_recycle;
-    RecyclerView.Adapter adapter;
-    int count = 0;
+    Adapter3 adapter;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity{
         btn = findViewById(R.id.buttonAdd);
         edt = findViewById(R.id.text);
         my_recycle = findViewById(R.id.my_recycle);
+        arrayList.add("Impotants to do");
         my_recycle.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         adapter = new Adapter3(arrayList);
         my_recycle.setAdapter(adapter);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 arrayList.add(edt.getText().toString());
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemChanged(arrayList.size()-1);
                 edt.setText("");
             }
         });

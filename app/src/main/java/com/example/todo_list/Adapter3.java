@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewAdapter> {
+public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewAdapter>{
        ArrayList<String> arrayList;
     public Adapter3(ArrayList<String> arrayList1) {
             this.arrayList = arrayList1;
@@ -27,16 +27,20 @@ public class Adapter3 extends RecyclerView.Adapter<Adapter3.ViewAdapter> {
 
     @Override
     public void onBindViewHolder(@NonNull final ViewAdapter holder, final int position) {
+
         holder.txt1.setText(arrayList.get(position));
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (position != 0) {
+                    arrayList.remove(position);
+                    notifyDataSetChanged();
+                }
             }
         });
-
     }
-        @Override
+
+    @Override
         public int getItemCount() {
             return arrayList.size();
         }
