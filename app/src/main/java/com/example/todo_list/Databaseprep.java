@@ -6,20 +6,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
 public class Databaseprep extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "student.db";
-    public static final String TABLE_NAME = "Student_table";
-    public static final String COL2_NAME = "Name";
 
-    public Databaseprep(@Nullable Context context) {
+    public static final String DATABASE_NAME = "Student_data.db";
+    public static final String TABLE_NAME = "Student_table5";
+    public static final String COL_1="ID";
+    public static final String COL_2 = "Name";
+    public Databaseprep(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create TABLE " + TABLE_NAME + " (NAME TEXT)");
+        db.execSQL("create TABLE "+ TABLE_NAME +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT)");
     }
 
     @Override
@@ -30,7 +29,7 @@ public class Databaseprep extends SQLiteOpenHelper {
     public boolean insertData(String Name){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues content=new ContentValues();
-        content.put(COL2_NAME,Name);
+        content.put(COL_2,Name);
         long result= db.insert(TABLE_NAME,null,content);
         if(result==-1){
             return false;
@@ -43,5 +42,9 @@ public class Databaseprep extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor raw=db.rawQuery("select * from "+TABLE_NAME,null);
         return raw;
+    }
+    public int deleteData(String x){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"Name=?", new String[]{x});
     }
 }

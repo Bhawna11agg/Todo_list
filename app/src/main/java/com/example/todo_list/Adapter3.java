@@ -1,20 +1,25 @@
 package com.example.todo_list;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-
 public class Adapter3 extends  RecyclerView.Adapter<Adapter3.ViewAdapter>{
     ArrayList<String> arrayList;
-    public Adapter3(ArrayList<String> arrayList1) {
+    MainActivity mainActivity;
+    AlertDialog.Builder alertDialogueBuilder;
+    public Adapter3(ArrayList<String> arrayList1,MainActivity mainActivity1) {
         this.arrayList = arrayList1;
+        this.mainActivity=mainActivity1;
     }
 
     @NonNull
@@ -26,17 +31,33 @@ public class Adapter3 extends  RecyclerView.Adapter<Adapter3.ViewAdapter>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewAdapter holder, final int position) {
-
+    public void onBindViewHolder(@NonNull final ViewAdapter holder, final int position){
         holder.txt1.setText(arrayList.get(position));
         holder.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (position != 0) {
-                    notifyDataSetChanged();
-                    arrayList.remove(position);
-                    notifyDataSetChanged();
-                }
+
+                AlertDialog alertDialogBuilder=new AlertDialog.Builder(v.getContext())
+                .setTitle("ALERT")
+                        .setCancelable(false)
+             .setMessage("Are you sure you want to delete the task "+arrayList.get(position)+" ?")
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mainActivity.delete(position);
+                                arrayList.remove(position);
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                       })
+                     .create();
+                       alertDialogBuilder .show();
+
             }
         });
     }
