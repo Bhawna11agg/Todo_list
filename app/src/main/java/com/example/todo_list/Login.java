@@ -21,6 +21,7 @@ public class Login extends AppCompatActivity {
     ImageView i0;
     EditText edt1, edt2, edt3;
     Button btn;
+    int phone;
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class Login extends AppCompatActivity {
                  catch(NumberFormatException nfe){
                  }
                  String mail=edt3.getText().toString();
-                if(Empty(name,mail)) {
+                if(Empty(name,phone,mail)) {
                         sharedPreferences.edit().putString(SharedPreference.NAME, name).apply();
                         sharedPreferences.edit().putString(SharedPreference.MAIL, mail).apply();
                         sharedPreferences.edit().putBoolean("firstTime",false).apply();
@@ -55,11 +56,14 @@ public class Login extends AppCompatActivity {
                 }
         });
     }
-    boolean Empty(String name, String mail){
+    boolean Empty(String name,int phone, String mail){
         boolean t=true;
             if(name.isEmpty()){
             edt1.setError("A username is required!!");
                 t=false;
+            }
+            if(phone<1000000000){
+                edt2.setError("A 10 digit valid phone number is needed");
             }
             if(mail.isEmpty()){
                edt3.setError("Please enter an email");

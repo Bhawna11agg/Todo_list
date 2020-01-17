@@ -37,6 +37,10 @@ SharedPreferences sharedPreferences;
                     .create();
             alertDialogBuilder.show();
         }
+        else{
+            Intent intent = new Intent(v.getContext(),SharedPreference.class);
+            startActivity(intent);
+        }
     }
     public void onClick2(final View v){
         if(sharedPreferences.getBoolean("firstTime",true)){
