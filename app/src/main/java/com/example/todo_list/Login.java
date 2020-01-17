@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                 if(Empty(name,mail)) {
                         sharedPreferences.edit().putString(SharedPreference.NAME, name).apply();
                         sharedPreferences.edit().putString(SharedPreference.MAIL, mail).apply();
-                        sharedPreferences.edit().putString("firstTime","false").apply();
+                        sharedPreferences.edit().putBoolean("firstTime",false).apply();
                     }
                 }
         });

@@ -22,7 +22,8 @@ SharedPreferences sharedPreferences;
         sharedPreferences=getSharedPreferences("com.example.todo_list",MODE_PRIVATE);
     }
     public void onClick1(final View v){
-            AlertDialog alertDialogBuilder=new AlertDialog.Builder(v.getContext())
+        if(sharedPreferences.getBoolean("firstTime",true)) {
+            AlertDialog alertDialogBuilder = new AlertDialog.Builder(v.getContext())
                     .setTitle("Welcome Geek!!")
                     .setCancelable(false)
                     .setMessage("You have to first Sign Up to Continue ")
@@ -34,7 +35,8 @@ SharedPreferences sharedPreferences;
                         }
                     })
                     .create();
-        alertDialogBuilder .show();
+            alertDialogBuilder.show();
+        }
     }
     public void onClick2(final View v){
         if(sharedPreferences.getBoolean("firstTime",true)){
