@@ -30,7 +30,7 @@ SharedPreferences sharedPreferences;
                     .setPositiveButton("Sign IN", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(v.getContext(), Login.class);
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
                             startActivity(intent);
                         }
                     })
@@ -51,7 +51,7 @@ SharedPreferences sharedPreferences;
                     .setPositiveButton("Sign IN", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(v.getContext(), Login.class);
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
                             startActivity(intent);
 
                         }
