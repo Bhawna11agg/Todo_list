@@ -55,8 +55,9 @@ public class Adapter3 extends  RecyclerView.Adapter<Adapter3.ViewAdapter>{
                                 dialog.cancel();
                             }
                        })
+
                      .create();
-                       alertDialogBuilder .show();
+                alertDialogBuilder .show();
 
             }
         });

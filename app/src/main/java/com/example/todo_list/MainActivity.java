@@ -1,15 +1,17 @@
 package com.example.todo_list;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -17,7 +19,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> arrayList = new ArrayList<>();
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.buttonAdd);
         edt = findViewById(R.id.text);
         my_recycle = findViewById(R.id.my_recycle);
+
         Cursor raw = mydb.getAllData();
         while (raw.moveToNext()) {
             arr1.add(raw.getString(1));

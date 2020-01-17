@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Loading"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+       <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'Do your work on time with the help of Todo'"
+        android:textColor="#00FFFF"
+        android:textSize="30dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:backgroundTint="#000000"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="0dp"
+            android:layout_height="223dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:backgroundTint="#262626"
+            android:text="Progress Report"
+            android:textColor="#00FFFF"
+            android:textSize="30dp"
+            android:onClick="onClick1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:backgroundTint="#000000"
+        android:orientation="horizontal"
+        android:padding="10dp">
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="223dp"
+                android:background="@drawable/shape"
+                android:backgroundTint="#262626"
+                android:text="Upcoming Tasks and Assign new Tasks"
+                android:textColor="#00FFFF"
+                android:textSize="30dp"
+                android:onClick="onClick2"/>
+    </LinearLayout>
+
+</LinearLayout>
